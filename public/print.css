@@ -1,0 +1,22 @@
+.filter,
+.pagination,
+.navbar {
+  display: none;
+}
+.card-content {
+  display: table;
+  page-break-inside: avoid;
+  /* obviously doesn't work in Chrome */
+}
+.cart table input {
+  border: none;
+  font-size: 1rem;
+}
+.cart .button.delete-item,
+.cart .button.delete-position,
+.cart .button#print,
+.cart .button#save,
+.cart .button#add-form,
+.cart .button#add-custom-line {
+  display: none;
+}

@@ -1,0 +1,24 @@
+<nav class="pagination is-centered" role="navigation" aria-label="pagination">
+
+  <ul class="pagination-list">
+
+
+    <li><a href="{{currentUrl}}1" class="pagination-link" aria-label="Goto page 1">&lt;&lt;</a></li>
+
+    {{{prevPage currentUrl currentPage}}}
+
+    <li><span class="pagination-ellipsis">&hellip;</span></li>
+
+    {{{pagin_1 currentUrl currentPage pages}}}
+    {{{pagin_2 currentUrl currentPage pages}}}
+    {{{pagin_3 currentUrl currentPage pages}}}
+    {{{pagin_4 currentUrl currentPage pages}}}
+    {{{pagin_5 currentUrl currentPage pages}}}
+
+    <li><span class="pagination-ellipsis">&hellip;</span></li>
+
+    {{{nextPage currentUrl currentPage pages}}}
+
+    <li><a href="{{currentUrl}}{{pages}}" class="pagination-link" aria-label="Goto page {{pages}}">&gt;&gt;</a></li>
+  </ul>
+</nav>

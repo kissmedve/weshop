@@ -1,0 +1,23 @@
+{
+  "name": "weshop",
+  "version": "1.0.0",
+  "description": "Application to support joint online-shopping including people without internet access",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "ugo",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.4",
+    "json2csv": "^5.0.1",
+    "mongoose": "^5.9.14",
+    "puppeteer": "^3.0.4"
+  }
+}

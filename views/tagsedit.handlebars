@@ -1,0 +1,178 @@
+<div class="container tagsedit">
+
+  <section class="section">
+
+    <div class="is-size-6">Edit</div>
+    <h2 class="title is-size-4">Tags</h2>
+
+    <form action="/tagsedit/:page" method="POST">
+
+      {{#each product}}
+
+      <div class="block">
+
+        <div class="columns">
+
+          <div class="column is-3">
+            <p class="product-title is-size-6"><strong>{{title}}</strong></p>
+          </div>
+
+          <div class="column is-9 tags-edit-checkboxes">
+            <div class="field">
+              <div class="control">
+                <div class="columns">
+                  <div class="column is-4">
+                    <label class="tag-group"><strong>Allgemein</strong></label>
+                    <label for='egg' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="egg" value="egg" />
+                      egg
+                    </label>
+                    <label for='ugo' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="ugo" value="ugo" />
+                      ugo
+                    </label>
+
+                    <label for='lebensmittel' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="lebensmittel" value="lebensmittel" />
+                      Lebensmittel
+                    </label>
+                    <label for='drogerie' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="drogerie" value="drogerie" />
+                      Drogerie
+                    </label>
+                  </div>
+
+                  <div class="column is-4">
+                    <label class="tag-group"><strong>Lebensmittel</strong></label>
+                    <label for='trockenvorraete' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="trockenvorraete" value="trockenvorraete" />
+                      Trockenvorraete
+                    </label>
+                    <label for='nuessetrockenobst' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="nuessetrockenobst" value="nuessetrockenobst" />
+                      Nüsse/Trockenobst
+                    </label>
+
+                    <label for='konserven' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="konserven" value="konserven" />
+                      Konserven
+                    </label>
+                    <label for='brotaufstrich' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="brotaufstrich" value="brotaufstrich" />
+                      Brotaufstrich
+                    </label>
+                    <label for='teekaffee' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="teekaffee" value="teekaffee" />
+                      Tee/Kaffee
+                    </label>
+                    <label for='suesswaren' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="suesswaren" value="suesswaren" />
+                      Süßwaren
+                    </label>
+                    <label for='knabberzeug' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="knabberzeug" value="knabberzeug" />
+                      Knabberzeug
+                    </label>
+                    <label for='kaese' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="kaese" value="kaese" />
+                      Käse
+                    </label>
+                    <label for='milchprodukte' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="milchprodukte" value="milchprodukte" />
+                      Milchprodukte
+                    </label>
+                    <label for='wurstwaren' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="wurstwaren" value="wurstwaren" />
+                      Wurstwaren
+                    </label>
+                    <label for='fleisch' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="fleisch" value="fleisch" />
+                      Fleisch
+                    </label>
+                    <label for='fisch' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="fisch" value="fisch" />
+                      Fisch
+                    </label>
+                    <label for='brot' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="brot" value="brot" />
+                      Brot
+                    </label>
+                    <label for='gemueseobst' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="gemueseobst" value="gemueseobst" />
+                      Gemüse/Obst
+                    </label>
+                    <label for='tiefkuehlwaren' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="tiefkuehlwaren" value="tiefkuehlwaren" />
+                      Tiefkühlprodukte
+                    </label>
+                    <label for='alkoholika' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="alkoholika" value="alkoholika" />
+                      Alkoholika
+                    </label>
+                    <label for='sonstiges' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="sonstiges" value="sonstiges" />
+                      Sonstiges
+                    </label>
+
+                  </div>
+
+                  <div class="column is-4">
+                    <label class="tag-group"><strong>Drogerie</strong></label>
+                    <label for='hygiene' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="hygiene" value="hygiene" />
+                      Hygiene
+                    </label>
+                    <label for='hautpflege' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="hautpflege" value="hautpflege" />
+                      Hautpflege
+                    </label>
+                    <label for='makeup' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="makeup" value="makeup" />
+                      Makeup
+                    </label>
+                    <label for='haarpflege' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="haarpflege" value="haarpflege" />
+                      Haarpflege
+                    </label>
+
+                    <label for='putzenwaschen' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="putzenwaschen" value="putzenwaschen" />
+                      Putzen/Waschen
+                    </label>
+                    <label for='haushalt' class="checkbox">
+                      <input type="checkbox" name="{{_id}}" id="haushalt" value="haushalt" />
+                      Haushalt allgemein
+                    </label>
+                  </div>
+                </div>
+                <!--- columns-->
+              </div>
+              <!--- control-->
+            </div>
+            <!--- field-->
+          </div>
+          <!--- column-->
+
+        </div>
+        <!--- columns-->
+
+      </div>
+      <!--- block-->
+
+      {{/each}}
+
+      <div class="field block">
+        <div class="control">
+          <input class="button is-normal has-background-grey-dark has-text-white" type="submit" value="Submit">
+        </div>
+      </div>
+
+    </form>
+
+  </section>
+
+  <section class="section pagination">
+    {{> pagination }}
+  </section>
+
+</div>

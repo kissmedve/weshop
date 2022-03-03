@@ -1,0 +1,42 @@
+<div class="container load has-text-centered">
+  <section class="section">
+    <h2 class="title is-size-4 has-text-centered">Import URLs</h2>
+    <div class="block">
+      <form action='/upload' method='POST'>
+
+        <div class="label has-text-centered">JSON File</div>
+        <div class="field block">
+
+          <div class="control  has-text-centered">
+
+            <label for='dm' class="radio">
+              <input type="radio" name="scrape" id="dm" value="dm" />
+              DM
+            </label>
+            <label for='mytime' class="radio">
+              <input type="radio" name="scrape" id="mytime" value="mytime" />
+              Mytime
+            </label>
+            <label for='rewe' class="radio">
+              <input type="radio" name="scrape" id="rewe" value="rewe" />
+              REWE
+            </label>
+            <label for='rewetest' class="radio">
+              <input type="radio" name="scrape" id="rewetest" value="rewetest" />
+              REWE Test
+            </label>
+
+          </div>
+
+        </div>
+
+    </div>
+
+    <div class="field block">
+      <div class="control has-text-centered">
+        <input class="button is-normal has-background-grey-dark has-text-white" type="submit" value="Submit">
+      </div>
+    </div>
+    </form>
+  </section>
+</div>

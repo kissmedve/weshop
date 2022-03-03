@@ -1,0 +1,93 @@
+<div class="container cart">
+  <section class="section item-table">
+    <div class="header columns">
+      <div class="column">
+        <h2 class="title is-size-4">Cart List</h2>
+      </div>
+      <div class="column is-narrow">
+        <button id="add-custom-line" class="button is-small has-background-grey-dark has-text-white-ter"
+          title="custom line">
+          <span class="icon">
+            <i class="fa fa-play-circle"></i>
+          </span>
+        </button>
+        <button id="save" class="button is-small has-background-grey-dark has-text-white-ter" title="save">
+          <span class="icon">
+            <i class="fa fa-save"></i>
+          </span>
+        </button>
+        <button id="print" class="button is-small has-background-grey-dark has-text-white-ter" title="print">
+          <span class="icon">
+            <i class="fa fa-print"></i>
+          </span>
+        </button>
+      </div>
+    </div>
+
+
+    <div class="block">
+
+      <table class="table is-narrow">
+        <thead>
+          <th class="item">Item</th>
+          <th class="unit-price">Price</th>
+          <th class="qut-price-user1" colspan="2">EGG</th>
+          <th class="qut-price-user2" colspan="2">UGO</th>
+          <th class="subtotal-item" colspan="2">Subtotal</th>
+          <th class="delete-buttons">&nbsp;</th>
+        </thead>
+        <tbody id="itemlist">
+
+        </tbody>
+        <tbody id="subtotals">
+          <tr>
+            <td class="subtotals-item-title">Subtotals</td>
+            <td></td>
+            <td></td>
+            <td class="items-subtotal-user1 price">0.00 €</td>
+            <td></td>
+            <td class="items-subtotal-user2 price">0.00 €</td>
+            <td></td>
+            <td class="items-subtotal-all price">0.00 €</td>
+            <td></td>
+          </tr>
+        </tbody>
+        <tbody id="extras">
+        </tbody>
+        <tfoot id="totals">
+        </tfoot>
+      </table>
+
+    </div>
+
+    <button id="add-form" class="button has-background-grey-dark has-text-white">
+      Add extra position
+    </button>
+    <div id="extra-positions-form"></div>
+  </section>
+
+  <section class="modal" id="customline-modal">
+    <div class="modal-background"></div>
+    <div class="modal-content box">
+      <h2 class="title is-size-4">Custom line item</h2>
+
+      <form id="customline">
+        <div class="field block">
+          <label class="label">Title</label>
+          <div class="control">
+            <input id="custom-lineitem-title" type="text">
+          </div>
+        </div>
+        <div class="field block">
+          <div class="control">
+            <input class="button custom-lineitem-submit is-normal has-background-grey-dark has-text-white" type="submit"
+              value="Add">
+          </div>
+        </div>
+      </form>
+
+    </div>
+    <button class="modal-close is-large" id="close-custom-line" aria-label="close"></button>
+  </section>
+
+</div>

@@ -2,9 +2,11 @@
 /node_modules
 /.pnp
 .pnp.js
+.env
 
 # csv
 /csv
 
 #data
-/data/dm.json
+/data
+

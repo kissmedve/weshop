@@ -15,55 +15,37 @@ async function scrapeRewe(url) {
     // as a bot you can't just click through to a shop, somewhere you get marked. IP address? IP plus something else? what exactly, remains to be tested.
     // so, for now we are pulling only title and image...
 
-    // REWE seems to employ alternating selector sets:
-    // "#pdpr-product-details-component", 
-    // "#pdpr-product-details-component .pdpr-Image img", 
-    // "h1"
-
-    // "#pdr-product-details-component", 
-    // "#pdr-product-details-component img", 
-    // "h1.pdr-QuickInfo__heading"
+    // 2022-04-04
+    // "#pdr-product-details-component"
+    // ".pdpr-ProductMedia .pdsr-ResponsiveImage img"
+    // "#pdpr-ProductInformation .pdpr-Title"
+    // "#pdpr-ProductInformation .pdpr-RegulatedProductName"
+    //
 
     await page.goto(url);
 
-    const foundSelector = await Promise.race([
-      page.waitForSelector("#pdr-product-details-component", { timeout: 500, visible: true })
-        .catch(),
-      page.waitForSelector("#pdpr-product-details-component", { timeout: 500, visible: true })
-        .catch(),
-    ]);
+    await page.waitForSelector("#pdpr-product-details-component");
 
-    const foundSelectorValue = foundSelector._remoteObject.description;
+    let imageSelector = ".pdpr-ProductMedia .pdsr-ResponsiveImage img";
 
-    console.log('foundSelectorValue', foundSelectorValue);
-
-    let imageSelector = "";
-    let titleSelector = "";
-
-    if (foundSelectorValue === "div#pdr-product-details-component") {
-      imageSelector = "#pdr-product-details-component img";
-      titleSelector = "h1.pdr-QuickInfo__heading";
-    }
-    if (foundSelectorValue === "div#pdpr-product-details-component") {
-      imageSelector = "#pdpr-product-details-component .pdpr-Image img";
-      titleSelector = "h1";
-    }
-
-    const imgUrl = await page.$eval(
-      imageSelector,
-      (img) => img.getAttribute("src")
+    const imgUrl = await page.$eval(imageSelector, (img) =>
+      img.getAttribute("src")
     );
 
-    const title = await page.$eval(
-      titleSelector,
-      (h1) => h1.innerText
-    );
+    let titleSelector = "#pdpr-ProductInformation h1.pdpr-Title";
+
+    const title = await page.$eval(titleSelector, (h1) => h1.innerText);
+
+    let titleExtSelector =
+      "#pdpr-ProductInformation .pdpr-RegulatedProductName";
+
+    const titleExt = await page.$eval(titleExtSelector, (div) => div.innerText);
 
     shopItem = {
       url: url,
       imgUrl: imgUrl,
       title: title,
-      titleExt: "",
+      titleExt: titleExt,
       baseprice: null,
       price: null,
       shop: "rewe",

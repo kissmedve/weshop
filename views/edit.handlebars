@@ -1,72 +1,107 @@
-<section class="section container editsingle">
+<section class='section container editsingle'>
+  <div class='is-size-6'>
+    Edit
+  </div>
+  <h2 class='title is-size-4'>
+    {{product.title}}
+  </h2>
 
-  <div class="is-size-6">Edit</div>
-  <h2 class="title is-size-4">{{product.title}}</h2>
-
-  <form action='/edit/{{product._id}}' method='POST'>
-
-    <div class="block">
-
+  <form action="/edit/{{product._id}}" method='POST'>
+    <div class='block'>
       <!-- Price -->
-      <div class="field">
-        <label for="price" class="label">Price</label>
-        <small>{{product.price}}</small>
-        <div class="control">
-          <input class="input" type="text" name="price" id="price">
+      <div class='field'>
+        <label for='price' class='label'>
+          Price
+        </label>
+        <small>
+          {{product.price}}
+        </small>
+        <div class='control'>
+          <input class='input' type='text' name='price' id='price' />
         </div>
       </div>
 
       <!-- BasePrice -->
-      <div class="field">
-        <label for="baseprice" class="label">Base Price</label>
-        <small>{{product.basePrice}}</small>
-        <div class="control">
-          <input class="input" type="text" name="baseprice" id="baseprice">
+      <div class='field'>
+        <label for='baseprice' class='label'>
+          Base Price
+        </label>
+        <small>
+          {{product.basePrice}}
+        </small>
+        <div class='control'>
+          <input class='input' type='text' name='baseprice' id='baseprice' />
         </div>
       </div>
     </div>
 
     <!-- Tags (group) -->
-    <div class="block">
-
-      <label for="tags" class="label">Tags</label>
+    <div class='block'>
+      <label for='tags' class='label'>
+        Tags
+      </label>
 
       <!-- Current Tags -->
-      <div class="current-tags has-background-white-ter">
-        <label>Current Tags:</label>
+      <div class='current-tags has-background-white-ter'>
+        <label>
+          Current Tags:
+        </label>
         {{#each product.tags}}
-        <span class="tag is-white is-normal">{{this}}</span>
+          <span class='tag is-white is-normal'>
+            {{this}}
+          </span>
         {{/each}}
+      </div>
+      <div>
+        <small>
+          <strong>
+            Check all tags you need, including the current ones!
+          </strong>
+        </small>
       </div>
 
       <!-- Tags -->
 
-      <div class="columns">
-        <div class="column tags-edit-checkboxes">
-          <div class="field">
-            <div class="control">
-              <div class="columns">
+      <div class='columns'>
+        <div class='column tags-edit-checkboxes'>
+          <div class='field'>
+            <div class='control'>
+              <div class='columns'>
+                <div class='column is-4'>
+                  <label class='tag-group'>
+                    <strong>
+                      Allgemein
+                    </strong>
+                  </label>
 
-                <div class="column is-4">
-                  <label class="tag-group"><strong>Allgemein</strong></label>
-                  <label for='egg' class="checkbox">
-                    <input type="checkbox" name="term" id="egg" value="egg" />
+                  <label for='egg' class='checkbox'>
+                    <input type='checkbox' name='term' id='egg' value='egg' />
                     egg
                   </label>
-                  <label for='ugo' class="checkbox">
-                    <input type="checkbox" name="term" id="ugo" value="ugo" />
+                  <label for='ugo' class='checkbox'>
+                    <input type='checkbox' name='term' id='ugo' value='ugo' />
                     ugo
                   </label>
 
-                  <label for='lebensmittel' class="checkbox">
-                    <input type="checkbox" name="term" id="lebensmittel" value="lebensmittel" />
+                  <label for='lebensmittel' class='checkbox'>
+                    <input
+                      type='checkbox'
+                      name='term'
+                      id='lebensmittel'
+                      value='lebensmittel'
+                    />
                     Lebensmittel
                   </label>
-                  <label for='drogerie' class="checkbox">
-                    <input type="checkbox" name="term" id="drogerie" value="drogerie" />
+                  <label for='drogerie' class='checkbox'>
+                    <input
+                      type='checkbox'
+                      name='term'
+                      id='drogerie'
+                      value='drogerie'
+                    />
                     Drogerie
                   </label>
-                  {{!-- <label for='dm' class="checkbox">
+                  {{! <label for='dm' class="checkbox">
                     <input type="checkbox" name="shop" id="dm" value="dm" />
                     DM
                   </label>
@@ -77,127 +112,240 @@
                   <label for='rewe' class="checkbox">
                     <input type="checkbox" name="shop" id="rewe" value="rewe" />
                     Rewe
-                  </label> --}}
+                  </label> }}
                 </div>
 
-                <div class="column is-4">
-                  <label class="tag-group"><strong>Lebensmittel</strong></label>
-                  <label for='trockenvorraete' class="checkbox">
-                    <input type="checkbox" name="term" id="trockenvorraete" value="trockenvorraete" />
+                <div class='column is-4'>
+                  <label class='tag-group'>
+                    <strong>
+                      Lebensmittel
+                    </strong>
+                  </label>
+                  <label for='trockenvorraete' class='checkbox'>
+                    <input
+                      type='checkbox'
+                      name='term'
+                      id='trockenvorraete'
+                      value='trockenvorraete'
+                    />
                     Trockenvorraete
                   </label>
-                  <label for='nuessetrockenobst' class="checkbox">
-                    <input type="checkbox" name="term" id="nuessetrockenobst" value="nuessetrockenobst" />
+                  <label for='nuessetrockenobst' class='checkbox'>
+                    <input
+                      type='checkbox'
+                      name='term'
+                      id='nuessetrockenobst'
+                      value='nuessetrockenobst'
+                    />
                     Nüsse/Trockenobst
                   </label>
 
-                  <label for='konserven' class="checkbox">
-                    <input type="checkbox" name="term" id="konserven" value="konserven" />
+                  <label for='konserven' class='checkbox'>
+                    <input
+                      type='checkbox'
+                      name='term'
+                      id='konserven'
+                      value='konserven'
+                    />
                     Konserven
                   </label>
-                  <label for='brotaufstrich' class="checkbox">
-                    <input type="checkbox" name="term" id="brotaufstrich" value="brotaufstrich" />
+                  <label for='brotaufstrich' class='checkbox'>
+                    <input
+                      type='checkbox'
+                      name='term'
+                      id='brotaufstrich'
+                      value='brotaufstrich'
+                    />
                     Brotaufstrich
                   </label>
-                  <label for='teekaffee' class="checkbox">
-                    <input type="checkbox" name="term" id="teekaffee" value="teekaffee" />
+                  <label for='teekaffee' class='checkbox'>
+                    <input
+                      type='checkbox'
+                      name='term'
+                      id='teekaffee'
+                      value='teekaffee'
+                    />
                     Tee/Kaffee
                   </label>
-                  <label for='suesswaren' class="checkbox">
-                    <input type="checkbox" name="term" id="suesswaren" value="suesswaren" />
+                  <label for='suesswaren' class='checkbox'>
+                    <input
+                      type='checkbox'
+                      name='term'
+                      id='suesswaren'
+                      value='suesswaren'
+                    />
                     Süßwaren
                   </label>
-                  <label for='knabberzeug' class="checkbox">
-                    <input type="checkbox" name="term" id="knabberzeug" value="knabberzeug" />
+                  <label for='knabberzeug' class='checkbox'>
+                    <input
+                      type='checkbox'
+                      name='term'
+                      id='knabberzeug'
+                      value='knabberzeug'
+                    />
                     Knabberzeug
                   </label>
-                  <label for='milchprodukte' class="checkbox">
-                    <input type="checkbox" name="term" id="milchprodukte" value="milchprodukte" />
+                  <label for='milchprodukte' class='checkbox'>
+                    <input
+                      type='checkbox'
+                      name='term'
+                      id='milchprodukte'
+                      value='milchprodukte'
+                    />
                     Milchprodukte
                   </label>
-                  <label for='kaese' class="checkbox">
-                    <input type="checkbox" name="term" id="kaese" value="kaese" />
+                  <label for='kaese' class='checkbox'>
+                    <input
+                      type='checkbox'
+                      name='term'
+                      id='kaese'
+                      value='kaese'
+                    />
                     Käse
                   </label>
-                  <label for='wurstwaren' class="checkbox">
-                    <input type="checkbox" name="term" id="wurstwaren" value="wurstwaren" />
+                  <label for='wurstwaren' class='checkbox'>
+                    <input
+                      type='checkbox'
+                      name='term'
+                      id='wurstwaren'
+                      value='wurstwaren'
+                    />
                     Wurstwaren
                   </label>
-                  <label for='fisch' class="checkbox">
-                    <input type="checkbox" name="term" id="fisch" value="fisch" />
+                  <label for='fisch' class='checkbox'>
+                    <input
+                      type='checkbox'
+                      name='term'
+                      id='fisch'
+                      value='fisch'
+                    />
                     Fisch
                   </label>
-                  <label for='brot' class="checkbox">
-                    <input type="checkbox" name="term" id="brot" value="brot" />
+                  <label for='brot' class='checkbox'>
+                    <input type='checkbox' name='term' id='brot' value='brot' />
                     Brot
                   </label>
-                  <label for='gemueseobst' class="checkbox">
-                    <input type="checkbox" name="term" id="gemueseobst" value="gemueseobst" />
+                  <label for='gemueseobst' class='checkbox'>
+                    <input
+                      type='checkbox'
+                      name='term'
+                      id='gemueseobst'
+                      value='gemueseobst'
+                    />
                     Gemüse/Obst
                   </label>
-                  <label for='tiefkuehlwaren' class="checkbox">
-                    <input type="checkbox" name="term" id="tiefkuehlwaren" value="tiefkuehlwaren" />
+                  <label for='tiefkuehlwaren' class='checkbox'>
+                    <input
+                      type='checkbox'
+                      name='term'
+                      id='tiefkuehlwaren'
+                      value='tiefkuehlwaren'
+                    />
                     Tiefkühlprodukte
                   </label>
-                  <label for='alkoholika' class="checkbox">
-                    <input type="checkbox" name="term" id="alkoholika" value="alkoholika" />
+                  <label for='alkoholika' class='checkbox'>
+                    <input
+                      type='checkbox'
+                      name='term'
+                      id='alkoholika'
+                      value='alkoholika'
+                    />
                     Alkoholika
                   </label>
-                  <label for='sonstiges' class="checkbox">
-                    <input type="checkbox" name="term" id="sonstiges" value="sonstiges" />
+                  <label for='sonstiges' class='checkbox'>
+                    <input
+                      type='checkbox'
+                      name='term'
+                      id='sonstiges'
+                      value='sonstiges'
+                    />
                     Sonstiges
                   </label>
-
                 </div>
 
-                <div class="column is-4">
-                  <label class="tag-group"><strong>Drogerie</strong></label>
-                  <label for='hygiene' class="checkbox">
-                    <input type="checkbox" name="term" id="hygiene" value="hygiene" />
+                <div class='column is-4'>
+                  <label class='tag-group'>
+                    <strong>
+                      Drogerie
+                    </strong>
+                  </label>
+                  <label for='hygiene' class='checkbox'>
+                    <input
+                      type='checkbox'
+                      name='term'
+                      id='hygiene'
+                      value='hygiene'
+                    />
                     Hygiene
                   </label>
-                  <label for='hautpflege' class="checkbox">
-                    <input type="checkbox" name="term" id="hautpflege" value="hautpflege" />
+                  <label for='hautpflege' class='checkbox'>
+                    <input
+                      type='checkbox'
+                      name='term'
+                      id='hautpflege'
+                      value='hautpflege'
+                    />
                     Hautpflege
                   </label>
-                  <label for='makeup' class="checkbox">
-                    <input type="checkbox" name="term" id="makeup" value="makeup" />
+                  <label for='makeup' class='checkbox'>
+                    <input
+                      type='checkbox'
+                      name='term'
+                      id='makeup'
+                      value='makeup'
+                    />
                     Makeup
                   </label>
-                  <label for='haarpflege' class="checkbox">
-                    <input type="checkbox" name="term" id="haarpflege" value="haarpflege" />
+                  <label for='haarpflege' class='checkbox'>
+                    <input
+                      type='checkbox'
+                      name='term'
+                      id='haarpflege'
+                      value='haarpflege'
+                    />
                     Haarpflege
                   </label>
 
-                  <label for='putzenwaschen' class="checkbox">
-                    <input type="checkbox" name="term" id="putzenwaschen" value="putzenwaschen" />
+                  <label for='putzenwaschen' class='checkbox'>
+                    <input
+                      type='checkbox'
+                      name='term'
+                      id='putzenwaschen'
+                      value='putzenwaschen'
+                    />
                     Putzen/Waschen
                   </label>
-                  <label for='haushalt' class="checkbox">
-                    <input type="checkbox" name="term" id="haushalt" value="haushalt" />
+                  <label for='haushalt' class='checkbox'>
+                    <input
+                      type='checkbox'
+                      name='term'
+                      id='haushalt'
+                      value='haushalt'
+                    />
                     Haushalt allgemein
                   </label>
                 </div>
               </div>
-              <!--- columns-->
+              <!---lumns-->
             </div>
-            <!--- control-->
+            <!---ntrol-->
           </div>
-          <!--- field-->
+          <!---eld-->
         </div>
-        <!--- column-->
-
+        <!---lumn-->
       </div>
-      <!--- columns-->
+      <!---lumns-->
     </div>
-    <!--- block-->
+    <!---ock-->
 
-
-    <div class="field block">
-      <div class="control">
-        <input class="button is-normal has-background-grey-dark has-text-white" type="submit" value="Submit">
+    <div class='field block'>
+      <div class='control'>
+        <input
+          class='button is-normal has-background-grey-dark has-text-white'
+          type='submit'
+          value='Submit'
+        />
       </div>
     </div>
-
   </form>
 </section>

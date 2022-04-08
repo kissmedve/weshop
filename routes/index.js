@@ -2,6 +2,9 @@ const express = require("express");
 const router = require("express").Router();
 const Json2csvParser = require("json2csv").Parser;
 const fs = require("fs");
+const path = require("path");
+const csv = require("fast-csv");
+const csvUpload = require("../data/csv-upload.csv");
 const filterParams = require("../helpers/filterParams");
 const paginUrl = require("../helpers/paginUrl");
 
@@ -21,9 +24,59 @@ router.get("/upload", (req, res) => {
 
 // Load up data file (urls list)
 router.post("/upload", (req, res) => {
-  let shop = req.body.scrape;
-  storeProducts(shop);
-  res.redirect("/upload");
+  if (req.body.scrape) {
+    let shop = req.body.scrape;
+    storeProducts(shop);
+  } else if (req.body.migrate) {
+    try {
+      fs.createReadStream(path.resolve(__dirname, `../data/csv-upload.csv`))
+        .pipe(csv.parse({ headers: true, ignoreEmpty: true }))
+        .on("error", (error) => console.log("error", error))
+        .on("data", (data) => {
+          const tagsArray = data.tags ? data.tags.split(",") : "";
+          Product.findById(data._id)
+            .lean()
+            .then((product) => {
+              if (!product) {
+                product = new Product({
+                  _id: data._id,
+                  title: data.title,
+                  titleExt: data.titleExt,
+                  imgUrl: data.imgUrl,
+                  basePrice: data.basePrice,
+                  price: data.price,
+                  shop: data.shop,
+                  tags: tagsArray,
+                  url: data.url,
+                });
+                product.save();
+              }
+              if (product) {
+                Product.updateOne(
+                  { _id: data._id },
+                  {
+                    _id: data._id,
+                    title: data.title,
+                    titleExt: data.titleExt,
+                    imgUrl: data.imgUrl,
+                    basePrice: data.basePrice,
+                    price: data.price,
+                    shop: data.shop,
+                    tags: tagsArray,
+                    url: data.url,
+                  },
+                  { useFindAndModify: false }
+                ).catch((err) => {
+                  console.log(err);
+                });
+              }
+            });
+        })
+        .on("end", (rowCount) => console.log(`Parsed ${rowCount} rows`));
+    } catch (err) {
+      console.log(err);
+    }
+  }
 });
 
 // Display product listings with tags form
@@ -61,7 +114,7 @@ router.post("/tagsedit/:page", (req, res) => {
   const form = JSON.parse(JSON.stringify(req.body));
   const arrayedForm = Object.entries(form);
   arrayedForm.map((item) => {
-    Product.updateOne({ _id: item[0] }, { tags: item[1] })
+    Product.updateOne({ _id: item[0] }, { $push: { tags: item[1] } })
       .then((product) => {
         console.log("item(s) successfully updated");
         res.redirect("../tagsedit/1");
@@ -93,10 +146,6 @@ router.get("/edit/:id", (req, res) => {
 
 // Edit product item
 router.post("/edit/:id", (req, res) => {
-  console.log("req.params.id: ", req.params.id);
-  console.log("req.body.price: ", req.body.price);
-  console.log("req.body.baseprice: ", req.body.baseprice);
-  console.log("req.body.term: ", req.body.term);
   Product.findById(req.params.id)
     .lean()
     .then((product) => {
@@ -246,43 +295,62 @@ router.get("/cartlist", (req, res) => {
 
 // Write csv file of all products
 router.get("/csv", (req, res) => {
-  Product.find({})
-    .lean()
-    .then((product) => {
-      if (!product) {
-        res.status(404).json({
-          status: "404",
-          message: "The requested resource could not be found",
+  try {
+    Product.find({})
+      .lean()
+      .then((product) => {
+        if (!product) {
+          res.status(404).json({
+            status: "404",
+            message: "The requested resource could not be found",
+          });
+        }
+        // select values
+        const data = product.map((row) => ({
+          _id: row._id,
+          title: row.title ? row.title : " ",
+          titleExt: row.titleExt ? row.titleExt : " ",
+          imgUrl: row.imgUrl ? row.imgUrl : " ",
+          basePrice: row.basePrice ? row.basePrice : " ",
+          price: row.price ? row.price : " ",
+          shop: row.shop ? row.shop : " ",
+          tags: row.tags ? "" + row.tags : " ",
+          url: row.url ? row.url : " ",
+        }));
+
+        const json2csvParser = new Json2csvParser({
+          header: true,
+          fields: [
+            "_id",
+            "title",
+            "titleExt",
+            "imgUrl",
+            "basePrice",
+            "price",
+            "shop",
+            "tags",
+            "url",
+          ],
+          encoding: "utf8",
         });
-      }
-      const json2csvParser = new Json2csvParser({
-        header: true,
-        fields: [
-          "title",
-          "titleExt",
-          "imgUrl",
-          "basePrice",
-          "price",
-          "shop",
-          "tags",
-          "url",
-        ],
-        encoding: "utf8",
-      });
-      const csvData = json2csvParser.parse(product);
+        const csvData = json2csvParser.parse(data);
 
-      const date = new Date();
-      const dateString = date.toISOString().split(".")[0].split("T").join("--");
-      const fileName = "all-products-" + dateString + ".csv";
+        const date = new Date();
+        const dateString = date
+          .toISOString()
+          .split(".")[0]
+          .split("T")
+          .join("--");
+        const fileName = "all-products-" + dateString + ".csv";
 
-      fs.writeFile(fileName, csvData, (error) => {
-        if (error) throw error;
-        console.log("writing file");
+        fs.writeFile(fileName, csvData, (error) => {
+          if (error) throw error;
+          console.log("writing file");
+        });
       });
-    })
-    .catch((error) => {
-      error;
-    });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 module.exports = router;

@@ -1,9 +1,37 @@
 h1.title,
 h2.title {
-  font-family: "Titillium Web", sans-serif;
+  font-family: 'Titillium Web', sans-serif;
   font-weight: 700;
 }
-
+h1.title {
+  font-size: 2.25rem;
+}
+h3.title {
+  font-size: 1.75rem;
+}
+.title.green {
+  color: #789f1f;
+}
+.title.blue {
+  color: #43a2b4;
+}
+h2.title.front {
+  background: rgb(122, 206, 222);
+  background: linear-gradient(
+    90deg,
+    rgba(122, 206, 222, 1) 0%,
+    rgb(171, 230, 115) 50%,
+    rgba(129, 202, 217, 1) 100%
+  );
+  width: 100%;
+  padding: 1.25rem 0;
+  text-align: center;
+  border-radius: 5px;
+}
+hr {
+  border-bottom: 1px solid #c7c7c7;
+}
+/* edit tags */
 .tags-edit-checkboxes .checkbox,
 .tags-checkboxes .checkbox {
   width: 100%;
@@ -26,6 +54,8 @@ h2.title {
   font-size: 0.925rem;
   font-weight: bold;
 }
+
+/* products */
 .card {
   box-shadow: none;
 }
@@ -59,6 +89,8 @@ h2.title {
 .baseprice {
   margin-bottom: 1rem;
 }
+
+/* pagination */
 .pagination {
   /* margin-top: 1.5rem; */
   display: flex;
@@ -68,6 +100,8 @@ h2.title {
   background-color: #4a4a4a !important;
   border-color: #4a4a4a !important;
 }
+
+/* navbar */
 .navbar-item {
   /* background-color: #4a4a4a; */
   color: #8cc113;
@@ -105,6 +139,8 @@ a.navbar-item:focus,
 .navbar-burger span {
   background-color: #b9ff17;
 }
+
+/* filters */
 .section.filter {
   padding: 3rem 1.5rem 1.5rem;
 }
@@ -142,6 +178,8 @@ a.navbar-item:focus,
   border-bottom: 1px solid transparent;
   transition: max-height 0.5s ease-out;
 }
+
+/* product buttons */
 .has-background-orange {
   background-color: #fff2ea !important;
 }
@@ -165,6 +203,8 @@ a.navbar-item:focus,
 .delete-position * {
   pointer-events: none;
 }
+
+/* cart list */
 .cart-quantity-input {
   max-width: 3rem;
   text-align: right;
@@ -226,6 +266,8 @@ tbody #extras {
   margin-top: 1rem;
   display: block;
 }
+
+/* filter */
 .filter-header.columns {
   display: flex;
 }
@@ -235,6 +277,18 @@ tbody #extras {
 .filter-header .column.is-narrow {
   text-align: right;
 }
+
+/* landing page */
+.statement {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 1.5rem;
+}
+.columns {
+  padding: 1.5rem 0;
+}
+
 /* media queries */
 @media screen and (max-width: 1023px) {
   .navbar-menu {
